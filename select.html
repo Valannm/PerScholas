@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>AirBnb Money Maker</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<style>
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #f2f6e9;
+}
+
+/*--- navigation bar ---*/
+.navbar {
+  background:#6ab446;
+}
+.nav-link {
+  color: #fff;
+  cursor: pointer;
+}
+.navbar-brand {
+	color: #DDD;
+}
+.nav-link {
+  margin-right: 1em !important;
+}
+/*.nav-link:hover {
+  color: #000;
+}*/
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+  color: #f4511e !important;
+  background-color: #fff !important;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.jumbotron {
+    background-color: #85bb65;
+    color: #fff;
+    padding: 100px 100px;
+    margin-left: 100;
+    padding-left: 100px;
+  }
+
+ .container {
+  width: 1170px; /* specify a width */
+  margin: 0 auto;  /* centers the container */
+  padding: 15px 15px; /* adds some padding to the left and right*/
+}
+
+.jumbotron .container { 
+  max-width: 100%; /* allows the jumbotron to adjust on smaller widths */
+  background-color: #6ab446;
+}
+.jumbotron h1 { 
+  text-align: center; /* centers the heading */
+  color: #DDD;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 500%;
+  /*text-transform: uppercase  ;*/
+}
+.jumbotron h3 { 
+  text-align: center; /* centers the heading */
+  color: #DDD;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  /*text-transform: uppercase  ;*/
+}
+
+modal-login {		
+	color: #85bb65;
+	width: 350px;
+}
+.modal-login .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+}
+.modal-login .modal-header {
+	border-bottom: none;   
+	position: relative;
+	justify-content: center;
+}
+.modal-login h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -15px;
+}
+.modal-login .form-control:focus {
+	border-color: #85bb65;
+}
+.modal-login .form-control, .modal-login .btn {
+	min-height: 40px;
+	border-radius: 3px; 
+}
+.modal-login .close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}	
+.modal-login .modal-footer {
+	background: #85bb65;
+	border-color: #85bb65;
+	text-align: center;
+	justify-content: center;
+	margin: 0 -20px -20px;
+	border-radius: 5px;
+	font-size: 13px;
+}
+.modal-login .modal-footer a {
+	color: #000000;
+}		
+.modal-login .avatar {
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: -70px;
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	z-index: 9;
+	background: #85bb65;
+	padding: 15px;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.modal-login .avatar img {
+	border-radius: 50%;
+	width: 100%;
+}
+
+.modal-login.modal-dialog {
+	margin-top: 80px;
+}
+.modal-login .btn, .modal-login .btn:active {
+	color: #000000;
+	border-radius: 4px;
+	background: #85bb65 !important;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	border: none;
+}
+.modal-login .btn:hover, .modal-login .btn:focus {
+	background: #45aba6 !important;
+	outline: none;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+
+footer {
+  font-size: 10px;
+  margin-bottom: 0px;
+  background:#6ab446;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md fixed-top">
+  <a class="navbar-brand" href="#">$ Airbnb Money Maker $</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="main-navigation">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">PREMIUM</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">BLOG</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">CONTACT</a>
+      </li>
+      <li class="nav-item">
+      	<button type="button" class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">LOGIN</button> 
+      </li>
+    </ul>
+  </div>
+</nav>
+
+ <div class="jumbotron  text-left mb-0" style="margin-bottom:0">
+      <h4>Airbnb Money Maker can search for profitable properties based on zip code, town and state, range of property prices, number of bedrooms and more.  How would you like to search?</h4>
+    <div id="accordion">
+    <form>
+        <input type="radio" id="zip"       name="choice" class="zip"        value="no" data-toggle="collapse" data-target="#frm1"> Zip Code
+
+        <input type="radio" id="citystate" name="choice" class="citystate"  value="no" onClick="clpIt('propertyList')" data-toggle="collapse" data-target="#selForm"> City and State
+
+        <input type="radio" id="price"     name="choice" class="price"      value="no" onClick="clpIt('propertyList')" data-toggle="collapse" data-target="#frm3"> Price
+    </form>
+
+    <div  id="frm1" class="collapse" data-parent="#accordion">
+       <form id="frm2" class="frm1" name="form1"  data-parent="#accordion"  action="">
+  			<input id="zipStr" type="text" placeholder="Enter Zip Code" name="search2"  >
+  			<button type="submit" onclick="return !(validateZipCode(form1.search2.value))" data-toggle="collapse" data-target="#propertyList"><i class="fa fa-search"></i></button>
+	   </form>
+	</div>
+	
+	<div  id="selForm" class="collapse" data-parent="#accordion">
+  	   <form id="selForm2" class="selForm2" name="selForm2">
+		   
+		<input type="hidden" name="country" id="countryId" value="US"/>
+		<select name="state" class="states order-alpha" id="stateId">
+    		<option value="">Select State</option>
+		</select>
+		<select name="city" class="cities order-alpha limit-pop-10000" id="cityId">
+    		<option value="">Select City</option>
+		</select>
+		<script src="//geodata.solutions/includes/statecity.js"></script>
+
+       </form>
+	</div>
+	<div id="frm3" class="collapse" data-parent="#accordion">
+		<form id="frm4" class="frm4" name="frm4">
+			<select id="priceSel" size="1">
+				<option value="" selected="selected">-- Select Price Range --</option>
+			</select>
+		</form>
+	</div>
+    </div>
+
+
+<div id="propertyList" class="collapse" >
+    	<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>id<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>name<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>host_id<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>host_name<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>neighbourhood_group<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>neighbourhood<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>latitude<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>longitude<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>room_type<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>price<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>minimum_nights<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>number_of_reviews<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>last_review<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>reviews_per_month<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>calculated_host_listings_count<span style="background-color:#BEC0BF"> </span></th>
+    <th class="tg-0pky"><span style="background-color:#BEC0BF"> </span><br>availability_365<span style="background-color:#BEC0BF"> </span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky"><span style="background-color:#DCDCDC"> </span><br>2441<span style="background-color:#DCDCDC"> </span></td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Cozy Artist’s Abode, ENTIRE Home-Wifi,NetFlix +</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2680</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Emily</span> </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Hennepin</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">45.00886</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">-93.23407</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Entire home/apt</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">85</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">1</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">233</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2020-03-15</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">1.8</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">128</span> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"><span style="background-color:#DCDCDC"> </span><br>4534<span style="background-color:#DCDCDC"> </span></td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Charming, 1 or 2BR + private bath, near downtown</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">5811</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Rachel</span> </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Hennepin</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">44.94566</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">-93.35721</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Private room</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">54</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">166</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2020-03-17</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">1.36</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">1</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">363</span> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"><span style="background-color:#DCDCDC"> </span><br>27319<span style="background-color:#DCDCDC"> </span></td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Parks, Lakes, Downtown, Light rail</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">117283</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Keith</span> </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Hennepin</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">44.91878</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">-93.23038</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">Private room</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">50</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">174</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2019-12-15</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">1.48</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">2</span> </td>
+    <td class="tg-0pky"> <br><span style="font-weight:normal;font-style:normal;color:#000">353</span> </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+
+ <footer class="container-fluid text-center fixed-bottom">
+  <a href="#myPage" title="To Top">
+    <span class="fa fa-chevron-up" style="color:red"></span>
+  </a>
+  <p>Website By Valerie Molignano</p>
+</footer>
+
+<script>
+function validateZipCode(elementValue){
+		console.log("zip=" + elementValue);
+    	var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+    	if (zipCodePattern.test(elementValue)) 
+    		return (true);
+    	else{
+    		alert("You have entered an invalid zipcode!");
+    		return (false);
+    	}
+}
+
+function clearIt(element) {
+    	document.getElementById(element).innerHTML = "";
+ }
+
+function collapseIt(cl, element) {
+
+    	$(document).ready(function(){
+  			$('.zip').click(function(){
+    			$('selForm').collapse('toggle');
+  			});
+  		});
+}
+
+function clpIt(id) {
+    	
+		var x = document.getElementById(id);
+		if (id == 'propertyList') {
+			$('#propertyList').collapse('hide');}
+		if (id == 'selForm') {
+			$('#selForm').collapse('hide');
+		}
+
+  		/*if (x.style.display === "none") {
+    		x.style.display = "block";
+  		} else {
+    	x.style.display = "none";
+  		}*/
+ }
+
+
+</script>
+</body>
+</html>
