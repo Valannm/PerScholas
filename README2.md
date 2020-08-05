@@ -2,8 +2,11 @@ README
 Airbnb Money Maker	
 
 Files:
+
 homepage.html	The home page for the Airbnb Money Maker app.
+
 select.html		2nd page of the app.
+
 
 To use the AirBnb Money Maker web app call the homepage.html from your browser.
 Click on the login button to enter your login and password.  Once logged in, you may press the ‘Let’s Get Started’ button.
